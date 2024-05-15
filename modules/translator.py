@@ -48,3 +48,25 @@ def text_to_audio(text:str):
             if chunk:
                 f.write(chunk)
     print("Done")
+
+
+def translate(source_lang, text):
+    
+    x_rapid_api_key = os.getenv("X_RAPID_API_KEY")
+    url = "https://google-translate1.p.rapidapi.com/language/translate/v2"
+
+    payload = {
+        "q": text,
+        "target": "en",
+        "source": source_lang
+    }
+    headers = {
+        "content-type": "application/x-www-form-urlencoded",
+        "Accept-Encoding": "application/gzip",
+        "X-RapidAPI-Key": x_rapid_api_key,
+        "X-RapidAPI-Host": "google-translate1.p.rapidapi.com"
+    }
+
+    response = requests.post(url, data=payload, headers=headers)
+
+    print(response.json())
