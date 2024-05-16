@@ -12,7 +12,7 @@ from translation import translation_page
 st.set_page_config(page_title="LANGUATOUR AI", page_icon="", layout="wide")
 
 def inject_custom_css():
-    with open('style.css') as f:
+    with open('./asset/css/style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 
